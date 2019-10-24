@@ -2,6 +2,7 @@ package com.itla.pruebadb;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -53,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button lista = findViewById(R.id.btlista);
+       lista.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(v.getContext(), ListaEstudiantes.class);
+               startActivity(intent);
+           }
+       });
     }
 
 }

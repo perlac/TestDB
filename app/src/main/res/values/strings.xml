@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PruebaDB</string>
+    <string name="nuevo">Nuevo</string>
+    <string name="guardar">Guardar</string>
+    <string name="cant_creditos">Cant. Creditos</string>
+    <string name="nombre_materia">Nombre Materia</string>
 </resources>
