@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.itla.pruebadb.adaptadores.EstudianteAdaptador;
 import com.itla.pruebadb.entidades.Estudiante;
-import com.itla.pruebadb.repositorio.EstudianteRepositorio;
 import com.itla.pruebadb.repositorio.EstudianteRepositorioDbImpl;
 
 import java.util.ArrayList;

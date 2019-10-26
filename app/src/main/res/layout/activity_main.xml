@@ -13,11 +13,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="30dp"
         android:ems="10"
         android:hint="Nombre"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editText4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -42,45 +40,29 @@
         android:id="@+id/button2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:text="Guardar"
-        app:layout_constraintEnd_toEndOf="@+id/editText4"
-        app:layout_constraintStart_toEndOf="@+id/btlista"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
-
-    <Button
-        android:id="@+id/btlista"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:text="Lista "
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/editText4"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintEnd_toEndOf="@+id/btnaddcarrera"
+        app:layout_constraintTop_toBottomOf="@+id/spcarrera" />
 
     <Spinner
         android:id="@+id/spcarrera"
         android:layout_width="0dp"
         android:layout_height="43dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnaddcarrera"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.183" />
+        app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
     <Button
         android:id="@+id/btnaddcarrera"
         android:layout_width="43dp"
         android:layout_height="43dp"
-        android:layout_marginEnd="20dp"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="@+id/spcarrera"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editText4"
         app:layout_constraintStart_toEndOf="@+id/spcarrera"
         app:layout_constraintTop_toTopOf="@+id/spcarrera" />
 

@@ -10,7 +10,7 @@ public interface EstudianteRepositorio {
    void crear(Estudiante estudiante);
    void actulizar (Estudiante estudiante);
    void borrar ( Estudiante estudiante);
-   Estudiante buscar(int id);
+   Estudiante buscar(Integer id);
    ArrayList<Estudiante> buscartodos();
 
 }

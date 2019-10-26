@@ -1,4 +1,4 @@
-package com.itla.pruebadb;
+package com.itla.pruebadb.adaptadores;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.itla.pruebadb.R;
 import com.itla.pruebadb.entidades.Estudiante;
 
 import java.util.ArrayList;

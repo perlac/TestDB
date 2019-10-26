@@ -24,10 +24,11 @@ public class EstudianteRepositorioDbImpl implements EstudianteRepositorio{
         ContentValues cv= new ContentValues();
         cv.put("nombre", estudiante.getNombre());
         cv.put("matricula", estudiante.getMatricula());
+        cv.put("carrera_id", estudiante.getIdcarrera());
 
         SQLiteDatabase db=  dbConexion.getWritableDatabase();
         long id= db.insert( "estudiante", null, cv);
-
+        db.close();
         if(id<= 0){
             Log.i("EstudianteRepositorio", "Ocurrio un error al salvar o guardar estudiante");
         } else {
@@ -37,17 +38,44 @@ public class EstudianteRepositorioDbImpl implements EstudianteRepositorio{
 
     @Override
     public void actulizar(Estudiante estudiante) {
+        ContentValues cv= new ContentValues();
+        cv.put("nombre", estudiante.getNombre());
+        cv.put("matricula", estudiante.getMatricula());
+        cv.put("carrera_id", estudiante.getIdcarrera());
 
+        SQLiteDatabase db=  dbConexion.getWritableDatabase();
+        long id= db.update( "estudiante",  cv,"id=?",new String[]{estudiante.getId().toString()});
+        db.close();
     }
 
     @Override
     public void borrar(Estudiante estudiante) {
-
+        SQLiteDatabase db=  dbConexion.getReadableDatabase();
+        long res=db.delete("estudiante", "id=?",new String[]{estudiante.getId().toString()});
+        db.close();
     }
 
     @Override
-    public Estudiante buscar(int id) {
-        return null;
+    public Estudiante buscar(Integer id) {
+
+        SQLiteDatabase db=  dbConexion.getReadableDatabase();
+        Cursor cursor=db.query("estudiante",null,"id=?",new String[]{id.toString()},null,null,null);
+
+        Estudiante estudiante = null;
+        while (cursor.moveToNext())
+        {
+            estudiante = new Estudiante();
+            estudiante.setId(cursor.getInt(cursor.getColumnIndex("id")));
+            estudiante.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
+            estudiante.setMatricula(cursor.getString(cursor.getColumnIndex("matricula")));
+            estudiante.setIdcarrera(cursor.getInt(cursor.getColumnIndex("carrera_id")));
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return estudiante;
     }
 
     @Override
@@ -62,6 +90,7 @@ public class EstudianteRepositorioDbImpl implements EstudianteRepositorio{
             estudiante.setId(cursor.getInt(cursor.getColumnIndex("id")));
             estudiante.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
             estudiante.setMatricula(cursor.getString(cursor.getColumnIndex("matricula")));
+            estudiante.setIdcarrera(cursor.getInt(cursor.getColumnIndex("carrera_id")));
             estudiantes.add(estudiante);
         }
 
@@ -71,6 +100,4 @@ public class EstudianteRepositorioDbImpl implements EstudianteRepositorio{
         return estudiantes;
 
     }
-
-
 }
