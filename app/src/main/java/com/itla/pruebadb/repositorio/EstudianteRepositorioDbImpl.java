@@ -81,7 +81,9 @@ public class EstudianteRepositorioDbImpl implements EstudianteRepositorio{
     @Override
     public ArrayList<Estudiante> buscartodos() {
         SQLiteDatabase db=  dbConexion.getReadableDatabase();
-        Cursor cursor=db.query("estudiante",null,null,null,null,null,null,null);
+        Cursor cursor=db.rawQuery("SELECT e.id,e.nombre,e.matricula,e.carrera_id,c.nombre nombrecarrera FROM estudiante e left join carrera c on e.carrera_id=c.idcarrera",null);
+
+                //db.query("estudiante",null,null,null,null,null,null,null);
         ArrayList<Estudiante>estudiantes = new ArrayList<>();
 
         while (cursor.moveToNext())
@@ -91,6 +93,7 @@ public class EstudianteRepositorioDbImpl implements EstudianteRepositorio{
             estudiante.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
             estudiante.setMatricula(cursor.getString(cursor.getColumnIndex("matricula")));
             estudiante.setIdcarrera(cursor.getInt(cursor.getColumnIndex("carrera_id")));
+            estudiante.setNombreCarrera(cursor.getString(cursor.getColumnIndex("nombrecarrera")));
             estudiantes.add(estudiante);
         }
 

@@ -42,7 +42,7 @@ public class MateriaRepositorioDbImpl implements MateriaRepositorio {
 
 
         SQLiteDatabase db=  dbConexion.getWritableDatabase();
-        long id= db.update( "materia",  cv,"id=?",new String[]{materia.getIdmateria().toString()});
+        long idmateria= db.update( "materia",  cv,"id=?",new String[]{materia.getIdmateria().toString()});
         db.close();
     }
 
@@ -62,7 +62,7 @@ public class MateriaRepositorioDbImpl implements MateriaRepositorio {
         while (cursor.moveToNext())
         {
             materia = new Materia();
-            materia.setIdmateria(cursor.getInt(cursor.getColumnIndex("id")));
+            materia.setIdmateria(cursor.getInt(cursor.getColumnIndex("idmateria")));
             materia.setNombremateria(cursor.getString(cursor.getColumnIndex("nombre")));
             materia.setCreditos(cursor.getInt(cursor.getColumnIndex("creditos")));
         }
@@ -82,7 +82,7 @@ public class MateriaRepositorioDbImpl implements MateriaRepositorio {
         while (cursor.moveToNext())
         {
             Materia materia = new Materia();
-            materia.setIdmateria(cursor.getInt(cursor.getColumnIndex("id")));
+            materia.setIdmateria(cursor.getInt(cursor.getColumnIndex("idmateria")));
             materia.setNombremateria(cursor.getString(cursor.getColumnIndex("nombre")));
             materia.setCreditos(cursor.getInt(cursor.getColumnIndex("creditos")));
             materias.add(materia);

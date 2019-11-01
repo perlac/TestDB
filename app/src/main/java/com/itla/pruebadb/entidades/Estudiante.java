@@ -8,6 +8,7 @@ public class Estudiante {
     public Integer getId() {
         return id;
     }
+    private String nombreCarrera;
 
     public void setId(Integer id) {
         this.id = id;
@@ -35,5 +36,13 @@ public class Estudiante {
 
     public void setIdcarrera(Integer idcarrera) {
         this.idcarrera = idcarrera;
+    }
+
+    public String getNombreCarrera() {
+        return nombreCarrera;
+    }
+
+    public void setNombreCarrera(String nombreCarrera) {
+        this.nombreCarrera = nombreCarrera;
     }
 }

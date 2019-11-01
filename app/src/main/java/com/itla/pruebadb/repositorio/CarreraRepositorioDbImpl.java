@@ -63,7 +63,7 @@ public class CarreraRepositorioDbImpl implements CarreraRepositorio {
         while (cursor.moveToNext())
         {
             carrera = new Carrera();
-            carrera.setIdcarrera(cursor.getInt(cursor.getColumnIndex("id")));
+            carrera.setIdcarrera(cursor.getInt(cursor.getColumnIndex("idcarrera")));
             carrera.setNombrecarrera(cursor.getString(cursor.getColumnIndex("nombre")));
         }
 
@@ -87,7 +87,7 @@ public class CarreraRepositorioDbImpl implements CarreraRepositorio {
         while (cursor.moveToNext())
         {
             Carrera carrera = new Carrera();
-            carrera.setIdcarrera(cursor.getInt(cursor.getColumnIndex("id")));
+            carrera.setIdcarrera(cursor.getInt(cursor.getColumnIndex("idcarrera")));
             carrera.setNombrecarrera(cursor.getString(cursor.getColumnIndex("nombre")));
             carrera.setCantcreditos(cursor.getInt(cursor.getColumnIndex("cantidadcreditos")));
             carrera.setCantmateria(cursor.getInt(cursor.getColumnIndex("cantmateria")));

@@ -38,4 +38,9 @@ public class Carrera {
     public void setCantcreditos(Integer cantcreditos) {
         this.cantcreditos = cantcreditos;
     }
+
+    @Override
+    public String toString() {
+        return  nombrecarrera;
+    }
 }

@@ -14,7 +14,7 @@ import com.itla.pruebadb.entidades.Estudiante;
 import java.util.ArrayList;
 
 public class EstudianteAdaptador extends RecyclerView.Adapter <RecyclerView.ViewHolder> {
-    private static TextView etnombre, etmatricula;
+    private static TextView etnombre, etmatricula,etcarrera;
     private ArrayList<Estudiante> estudiantes;
 
 
@@ -23,6 +23,7 @@ public class EstudianteAdaptador extends RecyclerView.Adapter <RecyclerView.View
             super(itemView);
             etnombre=itemView.findViewById(R.id.tvlistnombre);
             etmatricula=itemView.findViewById(R.id.tvlistmatricula);
+            etcarrera=itemView.findViewById(R.id.tvlistcarrera);
         }
     }
 
@@ -44,6 +45,7 @@ public class EstudianteAdaptador extends RecyclerView.Adapter <RecyclerView.View
 
         etmatricula.setText(estudiante.getMatricula());
         etnombre.setText(estudiante.getNombre());
+        etcarrera.setText(estudiante.getNombreCarrera());
     }
 
     @Override
