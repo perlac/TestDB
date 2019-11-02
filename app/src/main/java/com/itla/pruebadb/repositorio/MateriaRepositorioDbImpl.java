@@ -48,7 +48,7 @@ public class MateriaRepositorioDbImpl implements MateriaRepositorio {
 
     @Override
     public void borrar(Materia materia) {
-        SQLiteDatabase db=  dbConexion.getReadableDatabase();
+        SQLiteDatabase db=  dbConexion.getWritableDatabase();
         long res=db.delete("materia", "id=?",new String[]{materia.getIdmateria().toString()});
         db.close();
     }
@@ -92,5 +92,11 @@ public class MateriaRepositorioDbImpl implements MateriaRepositorio {
         db.close();
 
         return materias;
+    }
+
+    void borrarMaterias (Integer idcarrera){
+        SQLiteDatabase db=  dbConexion.getWritableDatabase();
+        long res=db.delete("materia", "idcarrera=?",new String[]{idcarrera.toString()});
+        db.close();
     }
 }

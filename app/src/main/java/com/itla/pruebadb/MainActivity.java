@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     EstudianteRepositorio estudianteRepositorio;
+    Spinner spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,15 +33,9 @@ public class MainActivity extends AppCompatActivity {
         final EditText tvnombre = findViewById(R.id.editText3);
         final EditText tvmatricula = findViewById(R.id.editText4);
         Button button1 = findViewById(R.id.btnaddcarrera);
+        spinner = findViewById(R.id.spcarrera);
 
-
-        CarreraRepositorioDbImpl carrerasimp = new CarreraRepositorioDbImpl(this);
-        ArrayList<Carrera> carreras = carrerasimp.buscartodos();
-        final ArrayAdapter<Carrera> carreraArrayAdapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,carreras);
-        carreraArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        final Spinner spinner = findViewById(R.id.spcarrera);
-        spinner.setAdapter(carreraArrayAdapter);
-
+        cargarCarrera();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,12 +60,22 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(getApplicationContext(),ListaCarreras.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        cargarCarrera();
+    }
 
+   private void cargarCarrera(){
+       CarreraRepositorioDbImpl carrerasimp = new CarreraRepositorioDbImpl(this);
+       ArrayList<Carrera> carreras = carrerasimp.buscartodos();
+       ArrayAdapter<Carrera> carreraArrayAdapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,carreras);
+       carreraArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+       spinner.setAdapter(carreraArrayAdapter);
+   }
 }

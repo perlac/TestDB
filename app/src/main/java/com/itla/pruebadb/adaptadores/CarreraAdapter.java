@@ -42,8 +42,8 @@ public class CarreraAdapter extends  RecyclerView.Adapter <RecyclerView.ViewHold
         Carrera carreras= this.carreras.get(position);
 
         etnombrecarrera.setText(carreras.getNombrecarrera());
-        etcancredito.setText(carreras.getCantcreditos().toString());
-        etcanmateria.setText(carreras.getCantmateria().toString());
+        etcancredito.setText("Créditos : "+carreras.getCantcreditos().toString());
+        etcanmateria.setText("Materias : "+carreras.getCantmateria().toString());
 
     }
 

@@ -50,7 +50,7 @@ public class EstudianteRepositorioDbImpl implements EstudianteRepositorio{
 
     @Override
     public void borrar(Estudiante estudiante) {
-        SQLiteDatabase db=  dbConexion.getReadableDatabase();
+        SQLiteDatabase db=  dbConexion.getWritableDatabase();
         long res=db.delete("estudiante", "id=?",new String[]{estudiante.getId().toString()});
         db.close();
     }

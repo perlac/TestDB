@@ -24,7 +24,7 @@ public class CarreraRepositorioDbImpl implements CarreraRepositorio {
 
         SQLiteDatabase db=  dbConexion.getWritableDatabase();
         long id= db.insert( "carrera", null, cv);
-
+        carrera.setIdcarrera((int) id);
         if(id<= 0){
             Log.i("carrerarepositorio", "Ocurrio un error al salvar o guardar la carrera");
         } else {
@@ -41,13 +41,11 @@ public class CarreraRepositorioDbImpl implements CarreraRepositorio {
 
         SQLiteDatabase db=  dbConexion.getWritableDatabase();
         long id= db.update( "carrera",cv,"id=?",new String[]{carrera.getIdcarrera().toString()});
-
-
     }
 
     @Override
     public void borrar(Carrera carrera) {
-        SQLiteDatabase db=  dbConexion.getReadableDatabase();
+        SQLiteDatabase db=  dbConexion.getWritableDatabase();
         long res=db.delete("carrera", "id=?",new String[]{carrera.getIdcarrera().toString()});
         db.close();
     }
@@ -81,7 +79,7 @@ public class CarreraRepositorioDbImpl implements CarreraRepositorio {
                 "on c.idcarrera=cm.idcarrera inner join materia m on m.idmateria=cm.idmateria " +
                 "group by c.idcarrera, c.nombre",null);
 
-                //db.query("carrera",null,null,null,null,null,null,null);
+        //db.query("carrera",null,null,null,null,null,null,null);
         ArrayList<Carrera> carreras = new ArrayList<>();
 
         while (cursor.moveToNext())
